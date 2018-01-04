@@ -24,7 +24,7 @@ import com.sdl.odata.api.edm.annotations.EdmProperty;
  */
 @EdmEntity(namespace = "SDL.OData.Example", key = "id", containerName = "SDLExample")
 @EdmEntitySet
-public class Person {
+public class Material {
 
     @EdmProperty(name = "id", nullable = false)
     private String personId;
@@ -38,14 +38,14 @@ public class Person {
     @EdmProperty(name = "age", nullable = false)
     private int age;
 
-    public Person(String personId, String firstName, String lastName, int age) {
+    public Material(String personId, String firstName, String lastName, int age) {
         this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public Person() {
+    public Material() {
     }
 
     public String getPersonId() {

@@ -21,7 +21,7 @@ import com.sdl.odata.api.edm.annotations.EdmReturnType;
 import com.sdl.odata.api.edm.model.Operation;
 import com.sdl.odata.api.processor.datasource.factory.DataSourceFactory;
 import com.sdl.odata.api.service.ODataRequestContext;
-import com.sdl.odata.example.Person;
+import com.sdl.odata.example.Material;
 import com.sdl.odata.example.datasource.InMemoryDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,8 +41,8 @@ public class GetAverageAge implements Operation<Double> {
         LOG.debug("Executing function 'GetAverageAge'");
 
         InMemoryDataSource dataSource = (InMemoryDataSource) dataSourceFactory.getDataSource(oDataRequestContext, "SDL.OData.Example.Person");
-        ConcurrentMap<String, Person> personConcurrentMap = dataSource.getPersonConcurrentMap();
-        Double result = personConcurrentMap.values().stream().mapToInt(Person::getAge).average().getAsDouble();
+        ConcurrentMap<String, Material> personConcurrentMap = dataSource.getPersonConcurrentMap();
+        Double result = personConcurrentMap.values().stream().mapToInt(Material::getAge).average().getAsDouble();
         LOG.debug("Average age: {}", result);
 
         return result;

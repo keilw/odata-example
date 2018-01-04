@@ -25,7 +25,7 @@ import com.sdl.odata.api.processor.query.QueryOperation;
 import com.sdl.odata.api.processor.query.QueryResult;
 import com.sdl.odata.api.processor.query.strategy.QueryOperationStrategy;
 import com.sdl.odata.api.service.ODataRequestContext;
-import com.sdl.odata.example.Person;
+import com.sdl.odata.example.Material;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +51,7 @@ public class InMemoryDataSourceProvider implements DataSourceProvider {
 
     @Override
     public boolean isSuitableFor(ODataRequestContext oDataRequestContext, String entityType) throws ODataDataSourceException {
-        return oDataRequestContext.getEntityDataModel().getType(entityType).getJavaType().equals(Person.class);
+        return oDataRequestContext.getEntityDataModel().getType(entityType).getJavaType().equals(Material.class);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class InMemoryDataSourceProvider implements DataSourceProvider {
     @Override
     public QueryOperationStrategy getStrategy(ODataRequestContext oDataRequestContext, QueryOperation queryOperation, TargetType targetType) throws ODataException {
         StrategyBuilder builder = new StrategyBuilder();
-        List<Predicate<Person>> predicateList = builder.buildCriteria(queryOperation, oDataRequestContext);
+        List<Predicate<Material>> predicateList = builder.buildCriteria(queryOperation, oDataRequestContext);
 
         int limit = builder.getLimit();
         int skip = builder.getSkip();
@@ -70,9 +70,9 @@ public class InMemoryDataSourceProvider implements DataSourceProvider {
 
         return () -> {
             LOG.debug("Executing query against in memory data");
-            Stream<Person> personStream = inMemoryDataSource.getPersonConcurrentMap().values().stream();
+            Stream<Material> personStream = inMemoryDataSource.getPersonConcurrentMap().values().stream();
 
-            List<Person> filteredPersons = personStream.filter(p -> predicateList.stream()
+            List<Material> filteredPersons = personStream.filter(p -> predicateList.stream()
                     .allMatch(f -> f.test(p))).collect(Collectors.toList());
 
             long count = 0;

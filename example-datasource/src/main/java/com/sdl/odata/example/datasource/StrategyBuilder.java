@@ -37,7 +37,7 @@ import com.sdl.odata.api.processor.query.SelectOperation;
 import com.sdl.odata.api.processor.query.SelectPropertiesOperation;
 import com.sdl.odata.api.processor.query.SkipOperation;
 import com.sdl.odata.api.service.ODataRequestContext;
-import com.sdl.odata.example.Person;
+import com.sdl.odata.example.Material;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import scala.collection.Iterator;
@@ -54,14 +54,14 @@ import java.util.function.Predicate;
 public class StrategyBuilder {
     private static final Logger LOG = LoggerFactory.getLogger(StrategyBuilder.class);
 
-    private List<Predicate<Person>> predicates = new ArrayList<>();
+    private List<Predicate<Material>> predicates = new ArrayList<>();
     private int limit = Integer.MAX_VALUE;
     private int skip = 0;
     private boolean count;
     private boolean includeCount;
     private List<String> propertyNames;
 
-    public List<Predicate<Person>> buildCriteria(QueryOperation queryOperation, ODataRequestContext requestContext)
+    public List<Predicate<Material>> buildCriteria(QueryOperation queryOperation, ODataRequestContext requestContext)
             throws ODataException {
         buildFromOperation(queryOperation);
         buildFromOptions(ODataUriUtil.getQueryOptions(requestContext.getUri()));
@@ -175,7 +175,7 @@ public class StrategyBuilder {
                 PropertyCriteriaValue propertyCriteriaValue = (PropertyCriteriaValue) comparisonCriteria.getLeft();
                 LiteralCriteriaValue literalCriteriaValue = (LiteralCriteriaValue) comparisonCriteria.getRight();
 
-                Predicate<Person> p = person -> {
+                Predicate<Material> p = person -> {
                     Object fieldValue = getPersonField(person, propertyCriteriaValue.getPropertyName());
                     Object queryValue = literalCriteriaValue.getValue();
 
@@ -189,11 +189,11 @@ public class StrategyBuilder {
         }
     }
 
-    private Object getPersonField(Person person, String propertyName) {
+    private Object getPersonField(Material material, String propertyName) {
         try {
-            Field field = person.getClass().getDeclaredField(propertyName);
+            Field field = material.getClass().getDeclaredField(propertyName);
             field.setAccessible(true);
-            return field.get(person);
+            return field.get(material);
         } catch (IllegalAccessException | NoSuchFieldException e) {
             LOG.debug("Could not load property: " + propertyName);
             return null;

@@ -18,7 +18,7 @@ package com.sdl.odata.example.service;
 import com.google.common.collect.Lists;
 import com.sdl.odata.api.ODataException;
 import com.sdl.odata.api.edm.registry.ODataEdmRegistry;
-import com.sdl.odata.example.Person;
+import com.sdl.odata.example.Material;
 import com.sdl.odata.example.datasource.InMemoryDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,17 +46,17 @@ public class EntityServiceRegistar {
         LOG.debug("Registering example entities");
 
         oDataEdmRegistry.registerClasses(Lists.newArrayList(
-                Person.class,
+                Material.class,
                 GetAverageAge.class
         ));
 
-        List<Person> persons = Lists.newArrayList(
-                new Person("MyHero", "Darkwing", "Duck", 23),
-                new Person("Sidekick", "Launchpad", "McQuack", 35),
-                new Person("Waddlemeyer", "Gosalyn", "Mallard", 9));
+        List<Material> materials = Lists.newArrayList(
+                new Material("MyHero", "Darkwing", "Duck", 23),
+                new Material("Sidekick", "Launchpad", "McQuack", 35),
+                new Material("Waddlemeyer", "Gosalyn", "Mallard", 9));
 
-        for (Person person : persons) {
-            inMemoryDataSource.create(null, person, null);
+        for (Material material : materials) {
+            inMemoryDataSource.create(null, material, null);
         }
     }
 }

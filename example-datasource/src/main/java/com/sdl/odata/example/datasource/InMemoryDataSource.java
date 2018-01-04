@@ -24,7 +24,7 @@ import com.sdl.odata.api.processor.datasource.DataSource;
 import com.sdl.odata.api.processor.datasource.ODataDataSourceException;
 import com.sdl.odata.api.processor.datasource.TransactionalDataSource;
 import com.sdl.odata.api.processor.link.ODataLink;
-import com.sdl.odata.example.Person;
+import com.sdl.odata.example.Material;
 import org.springframework.stereotype.Component;
 import scala.Option;
 
@@ -37,26 +37,26 @@ import java.util.concurrent.ConcurrentMap;
 @Component
 public class InMemoryDataSource implements DataSource {
 
-    private ConcurrentMap<String, Person> personConcurrentMap = new ConcurrentHashMap<>();
+    private ConcurrentMap<String, Material> personConcurrentMap = new ConcurrentHashMap<>();
 
 
     @Override
     public Object create(ODataUri oDataUri, Object o, EntityDataModel entityDataModel) throws ODataException {
-        Person person = (Person) o;
-        if(personConcurrentMap.putIfAbsent(person.getPersonId(), person) != null) {
+        Material material = (Material) o;
+        if(personConcurrentMap.putIfAbsent(material.getPersonId(), material) != null) {
             throw new ODataDataSourceException("Could not create entity, already exists");
         }
 
-        return person;
+        return material;
     }
 
     @Override
     public Object update(ODataUri oDataUri, Object o, EntityDataModel entityDataModel) throws ODataException {
-        Person person = (Person) o;
-        if(personConcurrentMap.containsKey(person.getPersonId())) {
-            personConcurrentMap.put(person.getPersonId(), person);
+        Material material = (Material) o;
+        if(personConcurrentMap.containsKey(material.getPersonId())) {
+            personConcurrentMap.put(material.getPersonId(), material);
 
-            return person;
+            return material;
         } else {
             throw new ODataDataSourceException("Unable to update person, entity does not exist");
         }
@@ -66,8 +66,8 @@ public class InMemoryDataSource implements DataSource {
     public void delete(ODataUri oDataUri, EntityDataModel entityDataModel) throws ODataException {
         Option<Object> entity = ODataUriUtil.extractEntityWithKeys(oDataUri, entityDataModel);
         if(entity.isDefined()) {
-            Person person = (Person) entity.get();
-            personConcurrentMap.remove(person.getPersonId());
+            Material material = (Material) entity.get();
+            personConcurrentMap.remove(material.getPersonId());
         }
     }
 
@@ -76,7 +76,7 @@ public class InMemoryDataSource implements DataSource {
         throw new ODataSystemException("No support for transactions");
     }
 
-    public ConcurrentMap<String, Person> getPersonConcurrentMap() {
+    public ConcurrentMap<String, Material> getPersonConcurrentMap() {
         return personConcurrentMap;
     }
 
