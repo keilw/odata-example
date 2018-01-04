@@ -21,27 +21,40 @@ import com.sdl.odata.api.edm.annotations.EdmProperty;
 
 /**
  * @author rdevries
+ * @author keilw
  */
-@EdmEntity(namespace = "SDL.OData.Example", key = "id", containerName = "SDLExample")
+@EdmEntity(namespace = "OData.Example", key = "material", containerName = "ZGW_MATERIAL_SERVICE_SRV")
 @EdmEntitySet
 public class Material {
 
-    @EdmProperty(name = "id", nullable = false)
+    @EdmProperty(name = "material", nullable = false)
     private String personId;
 
-    @EdmProperty(name = "firstName", nullable = false)
+    @EdmProperty(name = "IndSector", nullable = false)
     private String firstName;
 
-    @EdmProperty(name = "lastName", nullable = false)
+    @EdmProperty(name = "Langu", nullable = false)
     private String lastName;
+    
+    @EdmProperty(name = "MatlDesc", nullable = false)
+    private String description;
 
-    @EdmProperty(name = "age", nullable = false)
+    public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@EdmProperty(name = "age", nullable = false)
     private int age;
 
-    public Material(String personId, String firstName, String lastName, int age) {
+    public Material(String personId, String firstName, String lastName, String desc, int age) {
         this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.description = desc;
         this.age = age;
     }
 

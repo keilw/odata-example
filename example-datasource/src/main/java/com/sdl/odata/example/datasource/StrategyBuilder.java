@@ -153,7 +153,7 @@ public class StrategyBuilder {
 
     private void buildFromSelectByKey(SelectByKeyOperation selectByKeyOperation) {
         Map<String, Object> keys = selectByKeyOperation.getKeyAsJava();
-        String personId = (String)keys.get("id");
+        String personId = (String)keys.get("material");
         LOG.debug("Selecting by key: {}", personId);
 
         predicates.add(person -> person.getPersonId().equalsIgnoreCase(personId));

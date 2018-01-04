@@ -58,7 +58,7 @@ public class InMemoryDataSource implements DataSource {
 
             return material;
         } else {
-            throw new ODataDataSourceException("Unable to update person, entity does not exist");
+            throw new ODataDataSourceException("Unable to update material, entity does not exist");
         }
     }
 

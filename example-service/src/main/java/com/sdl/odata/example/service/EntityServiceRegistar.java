@@ -51,9 +51,9 @@ public class EntityServiceRegistar {
         ));
 
         List<Material> materials = Lists.newArrayList(
-                new Material("MyHero", "Darkwing", "Duck", 23),
-                new Material("Sidekick", "Launchpad", "McQuack", 35),
-                new Material("Waddlemeyer", "Gosalyn", "Mallard", 9));
+                new Material("MyHero", "Darkwing", "Duck", "Test Odata", 23),
+                new Material("Sidekick", "Launchpad", "McQuack", "Test Odata", 35),
+                new Material("0005430-01", "Gosalyn", "Mallard", "Test Odata", 9));
 
         for (Material material : materials) {
             inMemoryDataSource.create(null, material, null);
