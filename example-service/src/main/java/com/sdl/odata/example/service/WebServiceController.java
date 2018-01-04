@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 SDL Group
+ * Copyright (c) 2015-2018 SDL Group and others
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author rdevries
+ * @author keilw
  */
 @Controller
-@RequestMapping("/example.svc/**")
+@RequestMapping("/sap/opu/odata/sap/ZGW_MATERIAL_SERVICE_SRV.svc/**")
 public class WebServiceController extends AbstractODataController {
 }
