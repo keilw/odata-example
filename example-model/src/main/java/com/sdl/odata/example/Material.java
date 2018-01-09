@@ -23,12 +23,9 @@ import com.sdl.odata.api.edm.annotations.EdmProperty;
  * @author rdevries
  * @author keilw
  */
-@EdmEntity(namespace = "OData.Example", key = "material", containerName = "ZGW_MATERIAL_SERVICE_SRV")
+@EdmEntity(namespace = "OData.Example", key = "Material", containerName = "ZGW_MATERIAL_SERVICE_SRV")
 @EdmEntitySet
 public class Material {
-
-    @EdmProperty(name = "material", nullable = false)
-    private String personId;
 
     @EdmProperty(name = "IndSector", nullable = false)
     private String firstName;
@@ -38,8 +35,42 @@ public class Material {
     
     @EdmProperty(name = "MatlDesc", nullable = false)
     private String description;
+    
+    @EdmProperty(name = "Material", nullable = false)
+    private String personId;
+    
+    @EdmProperty(name = "MatlType", nullable = false)
+    private String type;
+    
+    @EdmProperty(name = "DelFlag")
+    private String delFlag;
+    
+    @EdmProperty(name = "MatlGroup")
+    private String group;
+    
+    @EdmProperty(name = "BasicView")
+    private boolean basicView;
 
-    public String getDescription() {
+	@EdmProperty(name = "NetWeight", nullable = false)
+    private double weight;
+    
+    public double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
 		return description;
 	}
 
@@ -47,15 +78,18 @@ public class Material {
 		this.description = description;
 	}
 
-	@EdmProperty(name = "age", nullable = false)
-    private int age;
-
-    public Material(String personId, String firstName, String lastName, String desc, int age) {
+    public Material(String personId, String firstName, String lastName, String desc, String t, 
+    		boolean bv, String df, String g,
+    		double w) {
         this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.description = desc;
-        this.age = age;
+        this.type = t;
+        this.basicView = bv;
+        this.delFlag = df;
+        this.group = g;
+        this.weight = w;
     }
 
     public Material() {
@@ -84,12 +118,20 @@ public class Material {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
+    public boolean isBasicView() {
+		return basicView;
+	}
 
-    public int getAge() {
-        return age;
-    }
+	public void setBasicView(boolean basicView) {
+		this.basicView = basicView;
+	}
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
+	}
 }

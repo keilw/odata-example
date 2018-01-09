@@ -148,7 +148,7 @@ public class StrategyBuilder {
     }
 
     private void buildFromSelect(SelectOperation selectOperation) {
-        LOG.debug("Selecting all persons, no predicates needed");
+        LOG.debug("Selecting all materials, no predicates needed");
     }
 
     private void buildFromSelectByKey(SelectByKeyOperation selectByKeyOperation) {

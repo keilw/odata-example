@@ -1,0 +1,122 @@
+{
+  "front-version": "2.13.2",
+  "version": 3,
+  "nodes": [
+    {
+      "type": "Project",
+      "id": "80a106bb-7276-4c47-8fce-e70964c73a01",
+      "lastModified": "2018-01-09T01:27:51.000+01:00",
+      "name": "OData"
+    },
+    {
+      "type": "Scenario",
+      "id": "d50609ad-8886-4b70-8199-7f2e2ffea29d",
+      "lastModified": "2018-01-09T01:27:34.669+01:00",
+      "name": "Scenario 1",
+      "requestOrder": [],
+      "parentId": "80a106bb-7276-4c47-8fce-e70964c73a01"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/sap/opu/odata/sap/ZGW_MATERIAL_SERVICE_SRV.svc/Materials"
+      },
+      "id": "8b23be00-b2f8-40a3-ac78-f3efae155486",
+      "lastModified": "2018-01-09T01:27:45.241+01:00",
+      "name": "Copy of GetMat",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/xml"
+        }
+      ],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "enabled": false,
+          "path": "code",
+          "value": "200"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "80a106bb-7276-4c47-8fce-e70964c73a01"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/sap/opu/odata/sap/ZGW_MATERIAL_SERVICE_SRV.svc/Materials"
+      },
+      "id": "067a5e66-157b-4eb5-9af6-1dc8291673c2",
+      "lastModified": "2018-01-09T01:27:51.000+01:00",
+      "name": "GetMat",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "assertions": [
+        {
+          "comparison": "Equals",
+          "subject": "ResponseStatus",
+          "enabled": false,
+          "path": "code",
+          "value": "200"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "80a106bb-7276-4c47-8fce-e70964c73a01"
+    }
+  ]
+}

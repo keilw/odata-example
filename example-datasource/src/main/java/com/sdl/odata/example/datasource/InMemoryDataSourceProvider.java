@@ -78,7 +78,7 @@ public class InMemoryDataSourceProvider implements DataSourceProvider {
             long count = 0;
             if (builder.isCount() || builder.includeCount()) {
                 count = filteredPersons.size();
-                LOG.debug("Counted {} persons matching query", count);
+                LOG.debug("Counted {} materials matching query", count);
 
                 if (builder.isCount()) {
                     return QueryResult.from(count);
@@ -89,11 +89,11 @@ public class InMemoryDataSourceProvider implements DataSourceProvider {
                 filteredPersons = filteredPersons.stream().skip(skip).limit(limit).collect(Collectors.toList());
             }
 
-            LOG.debug("Found {} persons matching query", filteredPersons.size());
+            LOG.debug("Found {} materials matching query", filteredPersons.size());
 
             if (propertyNames != null && !propertyNames.isEmpty()) {
                 try {
-                    LOG.debug("Selecting {} properties of person", propertyNames);
+                    LOG.debug("Selecting {} properties of material", propertyNames);
                     return QueryResult.from(EdmUtil.getEdmPropertyValue(filteredPersons.get(0), propertyNames.get(0)));
                 } catch (IllegalAccessException e) {
                     LOG.error(e.getMessage(), e);

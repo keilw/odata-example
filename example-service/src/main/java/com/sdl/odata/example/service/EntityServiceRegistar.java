@@ -30,6 +30,7 @@ import java.util.List;
 
 /**
  * @author rdevries
+ * @author keilw
  */
 @Component
 public class EntityServiceRegistar {
@@ -47,13 +48,13 @@ public class EntityServiceRegistar {
 
         oDataEdmRegistry.registerClasses(Lists.newArrayList(
                 Material.class,
-                GetAverageAge.class
+                GetAverageWeight.class
         ));
 
         List<Material> materials = Lists.newArrayList(
-                new Material("MyHero", "Darkwing", "Duck", "Test Odata", 23),
-                new Material("Sidekick", "Launchpad", "McQuack", "Test Odata", 35),
-                new Material("0005430-01", "Gosalyn", "Mallard", "Test Odata", 9));
+                new Material("0005430-01", "M", "E", "Test Odata", "ZPRD", false, null, "Z_SERIE", 0.260d),
+                new Material("0005430-02", "M", "E", "Test Odata", "ZPRD", false, null, "Z_SERIE", 0.260d),
+                new Material("0005430-03", "M", "E", "Test Odata", "ZPRD", false, null, "Z_SERIE", 0.260d));
 
         for (Material material : materials) {
             inMemoryDataSource.create(null, material, null);

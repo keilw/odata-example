@@ -29,20 +29,20 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * @author rdevries
+ * @author keilw
  */
-@EdmFunction(name = "GetAverageAge", namespace = "SDL.OData.Example", isBound = true)
+@EdmFunction(name = "GetAverageWeight", namespace = "SDL.OData.Example", isBound = true)
 @EdmReturnType(type = "Edm.Double")
-public class GetAverageAge implements Operation<Double> {
-    private static final Logger LOG = LoggerFactory.getLogger(GetAverageAge.class);
+public class GetAverageWeight implements Operation<Double> {
+    private static final Logger LOG = LoggerFactory.getLogger(GetAverageWeight.class);
 
     @Override
     public Double doOperation(ODataRequestContext oDataRequestContext, DataSourceFactory dataSourceFactory) throws ODataException {
-        LOG.debug("Executing function 'GetAverageAge'");
+        LOG.debug("Executing function 'GetAverageWeight'");
 
         InMemoryDataSource dataSource = (InMemoryDataSource) dataSourceFactory.getDataSource(oDataRequestContext, "SDL.OData.Example.Person");
         ConcurrentMap<String, Material> personConcurrentMap = dataSource.getPersonConcurrentMap();
-        Double result = personConcurrentMap.values().stream().mapToInt(Material::getAge).average().getAsDouble();
+        Double result = personConcurrentMap.values().stream().mapToDouble(Material::getWeight).average().getAsDouble();
         LOG.debug("Average age: {}", result);
 
         return result;
