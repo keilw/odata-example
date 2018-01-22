@@ -19,7 +19,7 @@ com.sdl.odata.example.service.ServiceContainer
 ```
 
 ## Creating Example Content
-The example service by default has only one Material in the dataset "0005430-01", in order to add more example content
+The example service by default has only one Person in the dataset "Donald", in order to add more example content
 in the service the following steps can be used. This also demonstrates how the OData service allows data creation.
 
 In order to create some content the below sample content can be used to post data to the OData Service.
